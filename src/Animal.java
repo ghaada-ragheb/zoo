@@ -1,4 +1,3 @@
-
 class Animal {
 
     String family;

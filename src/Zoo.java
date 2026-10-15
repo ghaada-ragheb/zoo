@@ -1,46 +1,39 @@
 
 class Zoo {
 
+    // Instruction 14
+    final int NBR_CAGES = 25;
+
     Animal[] animals;
     String name;
     String city;
-    int nbrCages;
-    int nbrAnimals; // Instruction 10
+    int nbrAnimals; // animal counter
 
-    // Instruction 7
     Zoo() {
-        animals = new Animal[25];
-        nbrCages = 25;
+        animals = new Animal[NBR_CAGES];
     }
 
-    // Instruction 6 : parameterized constructor
-    Zoo(String name, String city, int nbrCages) {
-        animals = new Animal[nbrCages];
+    // Instruction 14 : nbrCages removed from the constructor (a constant cannot be changed)
+    Zoo(String name, String city) {
+        animals = new Animal[NBR_CAGES];
         this.name = name;
         this.city = city;
-        this.nbrCages = nbrCages;
     }
 
-    // Instruction 8
     void displayZoo() {
-        System.out.println("Name: " + name + ", City: " + city + ", Nbr Cages: " + nbrCages);
+        System.out.println("Name: " + name + ", City: " + city + ", Nbr Cages: " + NBR_CAGES);
     }
 
-    // Instruction 9 : without toString(), println(myZoo) prints something like
-    // "Zoo@1b6d3586" (class name + hash code). Writing toString() fixes this.
     public String toString() {
-        return "Zoo{name='" + name + "', city='" + city + "', nbrCages=" + nbrCages
+        return "Zoo{name='" + name + "', city='" + city + "', nbrCages=" + NBR_CAGES
                 + ", nbrAnimals=" + nbrAnimals + "}";
     }
 
-    // Instruction 10 + 12
     boolean addAnimal(Animal animal) {
-        // Instruction 12 : an animal is unique in a zoo
         if (searchAnimal(animal) != -1) {
             return false;
         }
-        // Instruction 12
-        if (nbrAnimals >= nbrCages || nbrAnimals >= 25) {
+        if (nbrAnimals >= NBR_CAGES) {
             return false;
         }
         animals[nbrAnimals] = animal;
@@ -48,7 +41,6 @@ class Zoo {
         return true;
     }
 
-    // Instruction 11
     void displayAnimals() {
         System.out.println("Animals of " + name + ":");
         for (int i = 0; i < nbrAnimals; i++) {
@@ -65,7 +57,6 @@ class Zoo {
         return -1;
     }
 
-    // Instruction 13
     boolean removeAnimal(Animal animal) {
         int index = searchAnimal(animal);
         if (index == -1) {
@@ -77,5 +68,18 @@ class Zoo {
         animals[nbrAnimals - 1] = null;
         nbrAnimals--;
         return true;
+    }
+
+    // Instruction 15
+    boolean isZooFull() {
+        return nbrAnimals >= NBR_CAGES;
+    }
+
+    // Instruction 16
+    Zoo compareZoo(Zoo z1, Zoo z2) {
+        if (z1.nbrAnimals >= z2.nbrAnimals) {
+            return z1;
+        }
+        return z2;
     }
 }
