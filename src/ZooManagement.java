@@ -61,14 +61,14 @@ public class ZooManagement {
 
         // Instruction 10
         System.out.println("add tiger  : " + smallZoo.addAnimal(tiger));
-        System.out.println("add eagle  : " + smallZoo.addAnimal(cat));
+        System.out.println("add cat  : " + smallZoo.addAnimal(cat));
         System.out.println("add lion   : " + smallZoo.addAnimal(lion)); // false : zoo is full
 
         // Instruction 11
         smallZoo.displayAnimals();
         System.out.println("search tiger : " + smallZoo.searchAnimal(tiger));
-        Animal tiger2 = new Animal("Felidae", "Shere Khan", 7, true);
-        // same name -> found at the same index even though it is another object
+        Animal tiger2 = new Animal("tiger", "Small king", 7, true);
+        
         System.out.println("search identical tiger : " + smallZoo.searchAnimal(tiger2));
 
         // Instruction 12
