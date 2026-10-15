@@ -1,26 +1,53 @@
+package entities;
 
-class Zoo {
+public class Zoo {
 
-    // Instruction 14
-    final int NBR_CAGES = 25;
 
-    Animal[] animals;
-    String name;
-    String city;
-    int nbrAnimals; // animal counter
+    private final int NBR_CAGES = 25;
 
-    Zoo() {
+    // Instruction 18
+    private Animal[] animals;
+    private String name;
+    private String city;
+    private int nbrAnimals;
+
+    public Zoo() {
         animals = new Animal[NBR_CAGES];
     }
 
-    // Instruction 14 : nbrCages removed from the constructor (a constant cannot be changed)
-    Zoo(String name, String city) {
+    public Zoo(String name, String city) {
         animals = new Animal[NBR_CAGES];
-        this.name = name;
+        setName(name); // goes through the check
         this.city = city;
     }
 
-    void displayZoo() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            System.out.println("Error: the name of a zoo cannot be empty, name set to \"Unnamed zoo\".");
+            this.name = "Unnamed zoo";
+        } else {
+            this.name = name;
+        }
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getNbrAnimals() {
+        return nbrAnimals;
+    }
+
+
+    public void displayZoo() {
         System.out.println("Name: " + name + ", City: " + city + ", Nbr Cages: " + NBR_CAGES);
     }
 
@@ -29,11 +56,11 @@ class Zoo {
                 + ", nbrAnimals=" + nbrAnimals + "}";
     }
 
-    boolean addAnimal(Animal animal) {
+    public boolean addAnimal(Animal animal) {
         if (searchAnimal(animal) != -1) {
             return false;
         }
-        if (nbrAnimals >= NBR_CAGES) {
+        if (isZooFull()) {
             return false;
         }
         animals[nbrAnimals] = animal;
@@ -41,23 +68,23 @@ class Zoo {
         return true;
     }
 
-    void displayAnimals() {
+    public void displayAnimals() {
         System.out.println("Animals of " + name + ":");
         for (int i = 0; i < nbrAnimals; i++) {
             System.out.println("  " + i + " - " + animals[i]);
         }
     }
 
-    int searchAnimal(Animal animal) {
+    public int searchAnimal(Animal animal) {
         for (int i = 0; i < nbrAnimals; i++) {
-            if (animals[i].name.equals(animal.name)) {
+            if (animals[i].getName().equals(animal.getName())) {
                 return i;
             }
         }
         return -1;
     }
 
-    boolean removeAnimal(Animal animal) {
+    public boolean removeAnimal(Animal animal) {
         int index = searchAnimal(animal);
         if (index == -1) {
             return false;
@@ -70,13 +97,11 @@ class Zoo {
         return true;
     }
 
-    // Instruction 15
-    boolean isZooFull() {
+    public boolean isZooFull() {
         return nbrAnimals >= NBR_CAGES;
     }
 
-    // Instruction 16
-    Zoo compareZoo(Zoo z1, Zoo z2) {
+    public Zoo compareZoo(Zoo z1, Zoo z2) {
         if (z1.nbrAnimals >= z2.nbrAnimals) {
             return z1;
         }
