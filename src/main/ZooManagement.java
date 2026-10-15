@@ -1,3 +1,7 @@
+package main;
+
+import entities.Animal;
+import entities.Zoo;
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -8,7 +12,7 @@ public class ZooManagement {
         String zooName = "my zoo";
         System.out.println(zooName + " has " + nbrCages + " cages");
 
-        // Instruction 2 : read values from the keyboard
+        // Instruction 2
         Scanner scanner = new Scanner(System.in);
 
         do {
@@ -38,38 +42,36 @@ public class ZooManagement {
 
         // Instruction 5
         Animal lion = new Animal();
-        lion.family = "lions";
-        lion.name = "Simba";
-        lion.age = 5;
-        lion.isMammal = true;
+        lion.setFamily("lions");
+        lion.setName("Simba");
+        lion.setAge(5);
+        lion.setMammal(true);
 
-        Zoo myZoo = new Zoo("esprit2 ", "charguia");
-        myZoo.name = zooName;
-        myZoo.city = "Tunis";
-        // (Prosit 3 : nbrCages is now a constant, it cannot be assigned anymore)
+        Zoo myZoo = new Zoo();
+        myZoo.setName(zooName);
+        myZoo.setCity("ariana");
 
-        // Instruction 6 / 7 :
         Animal tiger = new Animal("tiger", "king", 7, true);
-        Animal cat= new Animal("cats", "mimicha", 3, false);
+        Animal cat = new Animal("cats", "mimicha", 3, false);
         Zoo smallZoo = new Zoo("esprit", "ariana");
 
         // Instruction 8
         myZoo.displayZoo();
-        // Instruction 8 / 9
+
         System.out.println(myZoo);
         System.out.println(myZoo.toString());
         System.out.println(lion);
 
         // Instruction 10
         System.out.println("add tiger  : " + smallZoo.addAnimal(tiger));
-        System.out.println("add cat  : " + smallZoo.addAnimal(cat));
+        System.out.println("add eagle  : " + smallZoo.addAnimal(cat));
         System.out.println("add lion   : " + smallZoo.addAnimal(lion));
 
         // Instruction 11
         smallZoo.displayAnimals();
         System.out.println("search tiger : " + smallZoo.searchAnimal(tiger));
-        Animal tiger2 = new Animal("king", "small king", 7, true);
-        // same name -> found at the same index even though it is another object
+        Animal tiger2 = new Animal("lions", "little king", 7, true);
+
         System.out.println("search identical tiger : " + smallZoo.searchAnimal(tiger2));
 
         // Instruction 12
@@ -83,7 +85,7 @@ public class ZooManagement {
 
 
         // Instruction 15
-        Zoo bigZoo = new Zoo("esprit2 ", "charguia");
+        Zoo bigZoo = new Zoo("esprit2", "charguia");
         System.out.println("bigZoo full? " + bigZoo.isZooFull());
         for (int i = 1; i <= 26; i++) {
             boolean added = bigZoo.addAnimal(new Animal("Family" + i, "Animal" + i, i, true));
@@ -95,7 +97,13 @@ public class ZooManagement {
 
         // Instruction 16
         Zoo winner = myZoo.compareZoo(bigZoo, smallZoo);
-        System.out.println("The zoo with the most animals is: " + winner.name);
+        System.out.println("The zoo with the most animals is: " + winner.getName());
+
+        // Instruction 18
+        Animal wrongAnimal = new Animal("dog", "Rex", -3, true);
+        System.out.println(wrongAnimal);
+        Zoo wrongZoo = new Zoo("", "monastir ");
+        System.out.println(wrongZoo);
 
         scanner.close();
     }
