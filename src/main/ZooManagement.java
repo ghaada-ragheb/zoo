@@ -1,7 +1,7 @@
 package main;
 
-import entities.Animal;
-import entities.Zoo;
+import entities.*;
+
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -106,5 +106,26 @@ public class ZooManagement {
         System.out.println(wrongZoo);
 
         scanner.close();
+
+
+        Aquatic aquatic = new Aquatic();
+        Terrestrial terrestrial = new Terrestrial();
+        Dolphin dolphin = new Dolphin();
+        Penguin penguin = new Penguin();
+
+        System.out.println(aquatic);
+        System.out.println(terrestrial);
+        System.out.println(dolphin);
+        System.out.println(penguin);
+
+        System.out.println(fish);
+        System.out.println(elephant);
+        System.out.println(flipper);
+        System.out.println(pingu);
+        fish.swim();
+        flipper.swim();
+        ping.swim();
+        scanner.close();
+
     }
 }
