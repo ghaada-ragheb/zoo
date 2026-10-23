@@ -10,13 +10,17 @@ public class Zoo {
     private String name;
     private String city;
     private int nbrAnimals;
+    private Aquatic[] aquaticAnimals;
+    private int nbrAquaticAnimals;
 
     public Zoo() {
         animals = new Animal[NBR_CAGES];
+        aquaticAnimals = new Aquatic[10];
     }
 
     public Zoo(String name, String city) {
         animals = new Animal[NBR_CAGES];
+        aquaticAnimals = new Aquatic[10];
         setName(name); // goes through the check
         this.city = city;
     }
@@ -106,5 +110,47 @@ public class Zoo {
             return z1;
         }
         return z2;
+    }
+
+    public void addAquaticAnimal(Aquatic aquatic) {
+        if (nbrAquaticAnimals < aquaticAnimals.length) {
+            aquaticAnimals[nbrAquaticAnimals] = aquatic;
+            nbrAquaticAnimals++;
+        } else {
+            System.out.println("No more space for aquatic animals in " + name);
+        }
+    }
+
+    public void displayAquaticAnimalsSwimming() {
+        for (int i = 0; i < nbrAquaticAnimals; i++) {
+            aquaticAnimals[i].swim();
+        }
+    }
+
+    public float maxPenguinSwimmingDepth() {
+        float max = 0;
+        for (int i = 0; i < nbrAquaticAnimals; i++) {
+            if (aquaticAnimals[i] instanceof Penguin) {
+                Penguin penguin = (Penguin) aquaticAnimals[i];
+                if (penguin.getSwimmingDepth() > max) {
+                    max = penguin.getSwimmingDepth();
+                }
+            }
+        }
+        return max;
+    }
+
+    public void displayNumberOfAquaticsByType() {
+        int nbrDolphins = 0;
+        int nbrPenguins = 0;
+        for (int i = 0; i < nbrAquaticAnimals; i++) {
+            if (aquaticAnimals[i] instanceof Dolphin) {
+                nbrDolphins++;
+            } else if (aquaticAnimals[i] instanceof Penguin) {
+                nbrPenguins++;
+            }
+        }
+        System.out.println("Number of dolphins: " + nbrDolphins);
+        System.out.println("Number of penguins: " + nbrPenguins);
     }
 }
