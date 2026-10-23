@@ -108,24 +108,40 @@ public class ZooManagement {
         scanner.close();
 
 
-        Aquatic aquatic = new Aquatic();
         Terrestrial terrestrial = new Terrestrial();
         Dolphin dolphin = new Dolphin();
         Penguin penguin = new Penguin();
 
-        System.out.println(aquatic);
         System.out.println(terrestrial);
         System.out.println(dolphin);
         System.out.println(penguin);
 
-        System.out.println(fish);
+        Terrestrial elephant = new Terrestrial("elephants", "Dumbo", 10, true, 4);
+        Dolphin flipper = new Dolphin("dolphins", "Flipper", 8, true, "ocean", 35.5f);
+        Penguin pingu = new Penguin("penguins", "Pingu", 4, false, "antarctica", 120.0f);
+        Penguin skipper = new Penguin("penguins", "Skipper", 6, false, "antarctica", 250.5f);
+        Dolphin echo = new Dolphin("dolphins", "Echo", 5, true, "sea", 40.0f);
+
         System.out.println(elephant);
         System.out.println(flipper);
         System.out.println(pingu);
-        fish.swim();
-        flipper.swim();
-        ping.swim();
-        scanner.close();
 
+        Zoo aquaticZoo = new Zoo("aqua park", "tunis");
+        aquaticZoo.addAquaticAnimal(flipper);
+        aquaticZoo.addAquaticAnimal(pingu);
+        aquaticZoo.addAquaticAnimal(skipper);
+        aquaticZoo.addAquaticAnimal(echo);
+
+        aquaticZoo.displayAquaticAnimalsSwimming();
+
+        System.out.println("Max penguin swimming depth: " + aquaticZoo.maxPenguinSwimmingDepth());
+
+        aquaticZoo.displayNumberOfAquaticsByType();
+
+        Aquatic flipperCopy = new Dolphin("dolphins", "Flipper", 8, true, "ocean", 20.0f);
+        Aquatic flipperElsewhere = new Dolphin("dolphins", "Flipper", 8, true, "river", 35.5f);
+        System.out.println("flipper equals flipperCopy: " + flipper.equals(flipperCopy));
+        System.out.println("flipper equals flipperElsewhere: " + flipper.equals(flipperElsewhere));
+        System.out.println("flipper equals pingu: " + flipper.equals(pingu));
     }
 }

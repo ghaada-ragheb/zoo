@@ -26,4 +26,9 @@ public class Penguin extends Aquatic {
                 + ", isMammal=" + isMammal() + ", habitat='" + habitat
                 + "', swimmingDepth=" + swimmingDepth + "}";
     }
+
+    @Override
+    public void swim() {
+        System.out.println("This penguin is swimming");
+    }
 }
