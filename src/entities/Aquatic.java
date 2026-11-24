@@ -1,8 +1,9 @@
 package entities;
 
+import enums.Food;
 import exception.InvalidAgeException;
 
-public abstract class Aquatic extends Animal {
+public abstract class Aquatic extends Animal implements Carnivore<Food> {
     protected String habitat;
     public Aquatic() {
     }

@@ -1,8 +1,10 @@
 package entities;
 
+import enums.Food;
 import exception.InvalidAgeException;
+import interfaces.Omnivore;
 
-public class Terrestrial extends Animal {
+public abstract class Terrestrial extends Animal implements Omnivore<Food> {
 
     protected int nbrLegs;
 
@@ -26,5 +28,20 @@ public class Terrestrial extends Animal {
     public String toString() {
         return "Terrestrial{family='" + getFamily() + "', name='" + getName() + "', age=" + getAge()
                 + ", isMammal=" + isMammal() + ", nbrLegs=" + nbrLegs + "}";
+    }
+
+    @Override
+    public void eatPlantAndMeet(Food food) {
+
+    }
+
+    @Override
+    public void eatMeat(Food meat) {
+
+    }
+
+    @Override
+    public void eatPlant(Food plant) {
+
     }
 }
