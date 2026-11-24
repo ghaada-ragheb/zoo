@@ -1,4 +1,7 @@
 package entities;
+
+import exception.InvalidAgeException;
+
 public class Animal {
 
     protected String family;
@@ -9,7 +12,7 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(String family, String name, int age, boolean isMammal) {
+    public Animal(String family, String name, int age, boolean isMammal) throws InvalidAgeException {
         this.family = family;
         this.name = name;
         setAge(age);
@@ -36,13 +39,11 @@ public class Animal {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age) throws InvalidAgeException {
         if (age < 0) {
-            System.out.println("Error: the age of an animal cannot be negative (" + age + "), age set to 0.");
-            this.age = 0;
-        } else {
-            this.age = age;
+            throw new InvalidAgeException("The age of an animal cannot be negative: " + age);
         }
+        this.age = age;
     }
 
     public boolean isMammal() {

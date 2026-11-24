@@ -1,5 +1,7 @@
 package entities;
 
+import exception.InvalidAgeException;
+
 public class Dolphin extends Aquatic {
 
     private float swimmingSpeed;
@@ -7,7 +9,7 @@ public class Dolphin extends Aquatic {
     public Dolphin() {
     }
 
-    public Dolphin(String family, String name, int age, boolean isMammal, String habitat, float swimmingSpeed) {
+    public Dolphin(String family, String name, int age, boolean isMammal, String habitat, float swimmingSpeed) throws InvalidAgeException {
         super(family, name, age, isMammal, habitat);
         this.swimmingSpeed = swimmingSpeed;
     }

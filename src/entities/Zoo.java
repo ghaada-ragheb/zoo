@@ -1,11 +1,12 @@
 package entities;
 
+import exception.ZooFullException;
+
 public class Zoo {
 
 
-    private final int NBR_CAGES = 25;
+    private final int NBR_CAGES = 3;
 
-    // Instruction 18
     private Animal[] animals;
     private String name;
     private String city;
@@ -60,16 +61,16 @@ public class Zoo {
                 + ", nbrAnimals=" + nbrAnimals + "}";
     }
 
-    public boolean addAnimal(Animal animal) {
-        if (searchAnimal(animal) != -1) {
-            return false;
+    public void addAnimal(Animal animal) throws ZooFullException {
+        if (searchAnimal(animal)!= -1){
+            System.out.println("This animal already exists in the zoo.");
+            return ;
         }
         if (isZooFull()) {
-            return false;
+            throw new ZooFullException("The zoo is full, cannot add this animal!");
         }
         animals[nbrAnimals] = animal;
         nbrAnimals++;
-        return true;
     }
 
     public void displayAnimals() {
