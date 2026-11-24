@@ -4,7 +4,7 @@ import enums.Food;
 import exception.InvalidAgeException;
 import interfaces.Omnivore;
 
-public abstract class Terrestrial extends Animal implements Omnivore<Food> {
+public class Terrestrial extends Animal implements Omnivore<Food> {
 
     protected int nbrLegs;
 

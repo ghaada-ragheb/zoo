@@ -2,6 +2,7 @@ package entities;
 
 import enums.Food;
 import exception.InvalidAgeException;
+import interfaces.Carnivore;
 
 public abstract class Aquatic extends Animal implements Carnivore<Food> {
     protected String habitat;
@@ -28,6 +29,15 @@ public abstract class Aquatic extends Animal implements Carnivore<Food> {
     }
 
     public abstract void swim();
+
+    @Override
+    public void eatMeat(Food meat) {
+        if (meat == Food.MEAT) {
+            System.out.println(name + " is eating meat");
+        } else {
+            System.out.println(name + " is carnivore, it cannot eat " + meat);
+        }
+    }
 
     @Override
     public boolean equals(Object obj) {
